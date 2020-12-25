@@ -1,0 +1,33 @@
+body {
+  margin: 0;
+  padding: 0;
+
+  background: rgb(29, 28, 45);
+  background: linear-gradient(180deg, rgba(29, 28, 45, 1) 0%, rgba(73, 71, 101, 1) 100%);
+
+  background-size: cover;
+  /*background-repeat: no-repeat;*/
+  background-attachment: fixed;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: Nunito-Sans;
+}
+
+:root {
+  --dmt-navy: #41468f;
+  --dmt-magenta: #2b294c;
+  --dmt-cyan: #3effe5;
+  --dmt-green: #00ffbd;
+  --dmt-violet: #986aeb; /* maybe a better violet than in dmt-gui, check and replace there! */
+}
+
+a {
+  color: white;
+}
+
+a:hover {
+  color: var(--dmt-cyan);
+}
