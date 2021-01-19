@@ -1,14 +1,21 @@
 import dmt from 'dmt/bridge';
 import { MirroringStore } from 'dmt/connectome-stores';
 
-import managedDevices from './managedDevices';
+import wifiNetworks from './wifiNetworks';
+import makeApi from './api';
 
 function init({ program }) {
-  const state = { managedDevices: managedDevices() };
+  const state = { wifiNetworks: wifiNetworks() };
 
   const store = new MirroringStore(state);
 
-  const channelList = program.registerProtocol({ protocol: 'dmtapp', lane: 'connect' });
+  const api = makeApi(store);
+
+  function onConnect({ channel }) {
+    channel.attachObject('wifi', api);
+  }
+
+  const channelList = program.registerProtocol({ protocol: 'dmtapp', lane: 'wifi-setup', onConnect });
 
   store.mirror(channelList);
 }

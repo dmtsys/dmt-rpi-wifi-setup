@@ -3,7 +3,7 @@
 Install the dependencies...
 
 ```bash
-cd dmt-connect
+cd dmt-rpi-wifi-setup
 npm install
 ```
 
@@ -19,7 +19,7 @@ Navigate to [localhost:5000](http://localhost:5000). You should see your app run
 
 You have to have `dmt-proc` running on localhost as well. This frontend will connect to it and display store state (part of the api for dmt-connect).
 
-## dmt-connect state
+## dmt-rpi-wifi-setup state
 
 ```
 managedDevices

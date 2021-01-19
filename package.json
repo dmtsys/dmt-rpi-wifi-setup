@@ -17,7 +17,7 @@
     "svelte": "^3.0.0"
   },
   "dependencies": {
-    "connectome": "0.0.83",
+    "connectome": "0.0.87",
     "sirv-cli": "^1.0.0"
   }
 }
