@@ -44,18 +44,15 @@
   <Logo />
   <p>Connect to a Wifi network below</p>
   <div
-    use:resize
     bind:offsetWidth={cardWidth}
     class="card"
     style="flex-basis: {$cardFlexHeight}px; visibility: {safeToShow ? 'visible' : 'hidden'};"
-    on:elResize={e => (cardHeight = e.detail.target.offsetHeight)}
   >
     {#if selectedNetwork == null}
       <div
         use:resize
         class="card-content"
         transition:fly|local={{ x: -cardWidth }}
-        style="max-height: {cardHeightValue};"
         on:elResize={e => setCardFlexHeight(e.detail.target.scrollHeight)}
       >
         <NetworkList {networks} on:selectNetwork={e => (selectedNetwork = e.detail)} />
@@ -65,7 +62,6 @@
         use:resize
         class="card-content"
         transition:fly|local={{ x: cardWidth }}
-        style="max-height: {cardHeightValue};"
         on:elResize={e => setCardFlexHeight(e.detail.target.scrollHeight)}
       >
         <NetworkConnect network={selectedNetwork} on:cancel={() => (selectedNetwork = undefined)} on:connect={e => connectNetwork(selectedNetwork, e.detail)} />
@@ -76,8 +72,6 @@
 
 <style>
   .wrapper {
-    width: 100%;
-    height: 100%;
     padding: 1rem;
     display: flex;
     align-items: center;
@@ -85,7 +79,6 @@
   }
 
   .card {
-    flex: 0 1;
     position: relative;
     background-color: rgba(255, 255, 255, 0.2);
     border-radius: 0.5rem;
@@ -95,8 +88,6 @@
   }
 
   .card-content {
-    display: flex;
-    flex-direction: column;
     position: absolute;
     top: 0;
     left: 0;
