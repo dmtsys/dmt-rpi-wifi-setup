@@ -1,6 +1,6 @@
 const observer = new ResizeObserver(entries => {
   for (const entry of entries) {
-    entry.target.dispatchEvent(new CustomEvent('elResize', { detail: entry.borderBoxSize.blockSize }));
+    entry.target.dispatchEvent(new CustomEvent('elResize', { detail: entry }));
   }
 });
 

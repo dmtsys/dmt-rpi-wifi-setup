@@ -44,13 +44,11 @@
   }
 </script>
 
+<div>
+  <!-- svelte-ignore a11y-autofocus -->
+  <input type="search" bind:value={search} on:keydown={handleSearchKeyDown} autofocus placeholder="Search network..." />
+</div>
 <ul>
-  <li class="search-item">
-    <div>
-      <!-- svelte-ignore a11y-autofocus -->
-      <input type="search" bind:value={search} on:keydown={handleSearchKeyDown} autofocus placeholder="Search network..." />
-    </div>
-  </li>
   {#each filteredNetworks as network, i}
     <li>
       <div>
@@ -74,15 +72,11 @@
   }
 
   li {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
   }
 
   li:first-child {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.8);
-  }
-
-  li:last-child {
-    border-bottom: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.8);
   }
 
   /* occupy horizontal space */
