@@ -1,5 +1,6 @@
 <script>
   import { createEventDispatcher, onMount } from 'svelte';
+  import ChevronRightIcon from './ChevronRightIcon.svelte';
 
   const dispatch = createEventDispatcher();
 
@@ -53,7 +54,10 @@
     <li>
       <div>
         <button class:highlight={highlightNetworkIndex === i} on:click={() => dispatch('selectNetwork', network)}>
-          {network}
+          <span>
+            {network}
+          </span>
+          <ChevronRightIcon />
         </button>
       </div>
     </li>
@@ -94,6 +98,9 @@
   }
 
   button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
     padding: 0.625rem 1rem;
     border-radius: 0;
@@ -106,13 +113,13 @@
   }
 
   button:hover {
-    color: var(--dmt-cool-cyan-rgb);
+    color: rgb(var(--dmt-cool-cyan-rgb));
     background-color: rgba(var(--dmt-cool-cyan-rgb), 0.15);
   }
 
   button:focus,
   button.highlight {
-    color: var(--dmt-cool-cyan-rgb);
+    color: rgb(var(--dmt-cool-cyan-rgb));
     background-color: rgba(var(--dmt-cool-cyan-rgb), 0.2);
   }
 
