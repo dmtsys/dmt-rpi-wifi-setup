@@ -14,7 +14,7 @@
   <!-- svelte-ignore a11y-autofocus -->
   <input type="password" bind:value={password} autofocus placeholder="Enter Wifi password" />
   <div class="buttons">
-    <Button on:click={() => dispatch('cancel')}>Cancel</Button>
+    <Button type="button" on:click={() => dispatch('cancel')}>Cancel</Button>
     <Button type="submit">Connect</Button>
   </div>
 </form>
