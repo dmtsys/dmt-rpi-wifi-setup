@@ -19,6 +19,7 @@
 
   function connectNetwork(apssid, password) {
     api('wifi').call('setup', { apssid, password });
+    selectedNetwork = undefined;
   }
 
   // Dont tween on render

@@ -9,18 +9,18 @@
   let password = '';
 </script>
 
-<div class="wrapper">
+<form on:submit|preventDefault={() => dispatch('connect', password)}>
   <p>Enter password to connect to <strong>{network}</strong></p>
   <!-- svelte-ignore a11y-autofocus -->
   <input type="password" bind:value={password} autofocus placeholder="Enter Wifi password" />
   <div class="buttons">
     <Button on:click={() => dispatch('cancel')}>Cancel</Button>
-    <Button on:click={() => dispatch('connect', password)}>Connect</Button>
+    <Button type="submit">Connect</Button>
   </div>
-</div>
+</form>
 
 <style>
-  .wrapper {
+  form {
     padding: 1rem;
   }
 
