@@ -66,9 +66,11 @@
 
 <style>
   ul {
+    flex: 0 1;
     list-style-type: none;
     padding: 0 1rem;
     margin: 0;
+    overflow-y: auto;
   }
 
   li {
