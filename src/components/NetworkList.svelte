@@ -36,13 +36,19 @@
       dispatch('selectNetwork', filteredNetworks[highlightNetworkIndex]);
     }
   }
+
+  function handleSearchKeyDown(e) {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+    }
+  }
 </script>
 
 <ul>
   <li class="search-item">
     <div>
       <!-- svelte-ignore a11y-autofocus -->
-      <input type="search" bind:value={search} autofocus placeholder="Search network..." />
+      <input type="search" bind:value={search} on:keydown={handleSearchKeyDown} autofocus placeholder="Search network..." />
     </div>
   </li>
   {#each filteredNetworks as network, i}
