@@ -1,5 +1,5 @@
 <script>
-  import { createEventDispatcher } from 'svelte';
+  import { createEventDispatcher, onMount } from 'svelte';
 
   const dispatch = createEventDispatcher();
 
@@ -15,6 +15,11 @@
   $: if (search) {
     highlightNetworkIndex = filteredNetworks.length > 0 ? 0 : -1;
   }
+
+  onMount(() => {
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  });
 
   function handleKeyDown(e) {
     if (e.key === 'ArrowUp') {
@@ -37,7 +42,7 @@
   <li class="search-item">
     <div>
       <!-- svelte-ignore a11y-autofocus -->
-      <input type="search" bind:value={search} autofocus placeholder="Search network..." on:keydown={handleKeyDown} />
+      <input type="search" bind:value={search} autofocus placeholder="Search network..." />
     </div>
   </li>
   {#each filteredNetworks as network, i}
@@ -80,6 +85,7 @@
   }
 
   input {
+    width: 100%;
     padding: 0.8rem 1rem;
     border-radius: 0;
     background-color: transparent;
