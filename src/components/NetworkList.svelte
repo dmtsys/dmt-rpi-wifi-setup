@@ -1,5 +1,6 @@
 <script>
   import { createEventDispatcher, onMount } from 'svelte';
+  import { List, ListItem } from 'dmt-frontend-components';
   import ChevronRightIcon from './ChevronRightIcon.svelte';
 
   const dispatch = createEventDispatcher();
@@ -45,49 +46,28 @@
   }
 </script>
 
-<div>
-  <!-- svelte-ignore a11y-autofocus -->
-  <input type="search" bind:value={search} on:keydown={handleSearchKeyDown} autofocus placeholder="Search network..." />
-</div>
-<ul>
+<List transparent focusTop>
+  <ListItem fluid>
+    <!-- svelte-ignore a11y-autofocus -->
+    <input type="search" bind:value={search} on:keydown={handleSearchKeyDown} autofocus placeholder="Search network..." />
+  </ListItem>
   {#each filteredNetworks as network, i}
-    <li>
-      <div>
-        <button class:highlight={highlightNetworkIndex === i} on:click={() => dispatch('selectNetwork', network)}>
-          <span>
-            {network}
-          </span>
-          <ChevronRightIcon />
-        </button>
-      </div>
-    </li>
+    <ListItem fluid>
+      <button class:highlight={highlightNetworkIndex === i} on:click={() => dispatch('selectNetwork', network)}>
+        <span>
+          {network}
+        </span>
+        <ChevronRightIcon />
+      </button>
+    </ListItem>
   {:else}
-    <li>
+    <ListItem>
       <p>No networks found</p>
-    </li>
+    </ListItem>
   {/each}
-</ul>
+</List>
 
 <style>
-  ul {
-    list-style-type: none;
-    padding: 0 1rem;
-    margin: 0;
-  }
-
-  li {
-    border-top: 1px solid rgba(255, 255, 255, 0.3);
-  }
-
-  li:first-child {
-    border-top: 1px solid rgba(255, 255, 255, 0.8);
-  }
-
-  /* occupy horizontal space */
-  li > * {
-    margin: 0 -1rem;
-  }
-
   input {
     width: 100%;
     padding: 0.8rem 1rem;
@@ -124,7 +104,6 @@
   }
 
   p {
-    padding: 0.625rem 1rem;
     text-align: center;
     opacity: 0.5;
   }
